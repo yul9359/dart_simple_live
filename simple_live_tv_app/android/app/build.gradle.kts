@@ -16,6 +16,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.xyzc.simple_live_tv"
+    newDsl = false
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
