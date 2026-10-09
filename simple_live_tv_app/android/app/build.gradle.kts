@@ -39,16 +39,6 @@ android {
         versionName = flutter.versionName
     }
 
-    signingConfigs {
-        create("release") {
-            keyAlias = keystoreProperties["keyAlias"]?.toString() ?: ""
-            keyPassword = keystoreProperties["keyPassword"]?.toString() ?: ""
-            storeFile = keystoreProperties["storeFile"]?.let { file(it) }
-            storePassword = keystoreProperties["storePassword"]?.toString() ?: ""
-            isV1SigningEnabled = true
-            isV2SigningEnabled = true
-        }
-    }
 
     buildTypes {
         release {
