@@ -1,0 +1,28 @@
+name: Manual Build TV APK
+
+on:
+  workflow_dispatch: # 这个设置就是允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.38.x' # 指定一个较新的稳定版
+          channel: 'stable'
+          
+      - name: Build TV APK
+        run: |
+          cd simple_live_tv_app
+          flutter pub get
+          flutter build apk --release
+          
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: simple-live-tv-apk
+          path: simple_live_tv_app/build/app/outputs/flutter-apk/app-release.apk
